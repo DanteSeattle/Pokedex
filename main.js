@@ -45,31 +45,29 @@ function renderPokemon(pokemonCard) {
 }
 
 favoritesRender = (e, pokemonCard) => {
-    if (e.target.innerText == `Favorite`) {
-        e.target.parentNode.remove()
-        const newListElement = document.createElement("li")
-        const pokemonName = document.createElement('h2')
-        const pokemonImage = document.createElement('img')
-        const pokemonTypes = document.createElement('p')
-        const favoritesButton = document.createElement('button')
+    e.target.parentNode.remove()
+    const newListElement = document.createElement("li")
+    const pokemonName = document.createElement('h2')
+    const pokemonImage = document.createElement('img')
+    const pokemonTypes = document.createElement('p')
+    const favoritesButton = document.createElement('button')
 
-        favoritesButton.setAttribute(`id`, `button`)
-        pokemonName.innerText = pokemonCard.id + " " + pokemonCard.name
-        pokemonImage.src = pokemonCard.image
-        favoritesButton.innerText = `Remove from Favorites`
+    favoritesButton.setAttribute(`id`, `button`)
+    pokemonName.innerText = pokemonCard.id + " " + pokemonCard.name
+    pokemonImage.src = pokemonCard.image
+    favoritesButton.innerText = `Remove from Favorites`
 
-        //since pokemon can have 1 or 2 types run a for loop to add to string that runs the length of the array
-        for(let x=0; x<pokemonCard.type.length; x++)
-        pokemonTypes.innerText = pokemonTypes.innerText + pokemonCard.type[x] + ", "
+    //since pokemon can have 1 or 2 types run a for loop to add to string that runs the length of the array
+    for(let x=0; x<pokemonCard.type.length; x++)
+    pokemonTypes.innerText = pokemonTypes.innerText + pokemonCard.type[x] + ", "
 
-        newListElement.appendChild(pokemonName)
-        newListElement.appendChild(pokemonImage)
-        newListElement.appendChild(pokemonTypes)
-        newListElement.appendChild(favoritesButton)
-        likeContainer.appendChild(newListElement)
+    newListElement.appendChild(pokemonName)
+    newListElement.appendChild(pokemonImage)
+    newListElement.appendChild(pokemonTypes)
+    newListElement.appendChild(favoritesButton)
+    likeContainer.appendChild(newListElement)
 
-        favoritesButton.addEventListener(`click`, e => removeFavoritesRender(e, pokemonCard))
-    }
+    favoritesButton.addEventListener(`click`, e => removeFavoritesRender(e, pokemonCard))
 }
 
 removeFavoritesRender = (e, pokemonCard) => {
