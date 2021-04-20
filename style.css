@@ -1,0 +1,29 @@
+#pokemonList,
+#likeContainer {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+li {
+    list-style: none;
+    padding: 50px;
+    font-size: 1em;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}
