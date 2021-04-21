@@ -1,5 +1,14 @@
 let div = document.querySelector(`#likeContainer`)
 
+class aPokemonCard {
+
+    constructor( myId, myName, myImage, myType ){
+        this.id = myId
+        this.name = myName
+        this.image = myImage
+        this.type = myType.map(pokemonType => pokemonType.type.name)
+    }
+}
 
 const getPokemon = async function (start, stop) {
     const tempArray = [];
@@ -8,11 +17,14 @@ const getPokemon = async function (start, stop) {
         const pokemon = await data.json()
 
 
-        const pokemonCard = {}
-        pokemonCard.id = pokemon.id
-        pokemonCard.name = pokemon.name
-        pokemonCard.image = pokemon.sprites.front_default
-        pokemonCard.type = pokemon.types.map(pokemonType => pokemonType.type.name)
+
+        // new pokemonCard(pokemon.id,pokemon.name,pokemon.sprites.front_default)
+        const pokemonCard = new aPokemonCard(pokemon.id,pokemon.name,pokemon.sprites.front_default,pokemon.types)
+
+        // pokemonCard.id = pokemon.id
+        // pokemonCard.name = pokemon.name
+        // pokemonCard.image = pokemon.sprites.front_default
+        // pokemonCard.type = pokemon.types.map(pokemonType => pokemonType.type.name)
 
         renderPokemon(pokemonCard)
         tempArray.push(pokemonCard)
@@ -21,7 +33,7 @@ const getPokemon = async function (start, stop) {
     }
 
 }
-getPokemon(1, 152)
+getPokemon(1, 899)
 function renderPokemon(pokemonCard) {
     const pokemonList = document.getElementById("pokemonList")
     const newListElement = document.createElement("li")
