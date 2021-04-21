@@ -1,5 +1,6 @@
 let div = document.querySelector(`#likeContainer`)
 
+
 class aPokemonCard {
 
     constructor( myId, myName, myImage, myType ){
@@ -9,6 +10,11 @@ class aPokemonCard {
         this.type = myType.map(pokemonType => pokemonType.type.name)
     }
 }
+
+const ul = document.querySelector(`#pokemonList`)
+const form = document.querySelector(`form`)
+const dropdown = document.querySelector(`#dropdown`)
+
 
 const getPokemon = async function (start, stop) {
     const tempArray = [];
@@ -29,11 +35,25 @@ const getPokemon = async function (start, stop) {
         renderPokemon(pokemonCard)
         tempArray.push(pokemonCard)
 
-
     }
 
 }
+
 getPokemon(1, 899)
+
+
+getPokemon(1, 152)
+
+form.addEventListener(`submit`, e => {
+    e.preventDefault()
+    let dropdownValue = parseInt(dropdown.value) + 1
+    while (ul.hasChildNodes()) {
+        ul.removeChild(ul.childNodes[0])
+    }
+    getPokemon(1, dropdownValue)
+    console.log(`Event is happening!`)
+})
+
 function renderPokemon(pokemonCard) {
     const pokemonList = document.getElementById("pokemonList")
     const newListElement = document.createElement("li")
@@ -59,7 +79,7 @@ function renderPokemon(pokemonCard) {
     likeButton.addEventListener(`click`, e => favoritesRender(e, pokemonCard))
 }
 
-favoritesRender = (e, pokemonCard) => {
+const favoritesRender = (e, pokemonCard) => {
     e.target.parentNode.remove()
     const newListElement = document.createElement("li")
     const pokemonName = document.createElement('h2')
@@ -85,10 +105,9 @@ favoritesRender = (e, pokemonCard) => {
     favoritesButton.addEventListener(`click`, e => removeFavoritesRender(e, pokemonCard))
 }
 
-removeFavoritesRender = (e, pokemonCard) => {
+const removeFavoritesRender = (e, pokemonCard) => {
     e.target.parentNode.remove()
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonCard.id}`)
         .then(data => data.json())
     renderPokemon(pokemonCard)
 }
-
