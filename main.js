@@ -25,7 +25,7 @@ const getPokemon = async function (start, stop) {
 
 
         // new pokemonCard(pokemon.id,pokemon.name,pokemon.sprites.front_default)
-        const pokemonCard = new aPokemonCard(pokemon.id,pokemon.name,pokemon.sprites.front_default,pokemon.types)
+        const pokemonCard = new aPokemonCard(pokemon.id, pokemon.name, pokemon.sprites.front_default, pokemon.types)
 
         // pokemonCard.id = pokemon.id
         // pokemonCard.name = pokemon.name
@@ -33,13 +33,13 @@ const getPokemon = async function (start, stop) {
         // pokemonCard.type = pokemon.types.map(pokemonType => pokemonType.type.name)
 
         renderPokemon(pokemonCard)
-        tempArray.push(pokemonCard)
+        //tempArray.push(pokemonCard)
 
     }
 
 }
 
-getPokemon(1, 899)
+
 
 
 getPokemon(1, 152)
