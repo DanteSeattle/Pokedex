@@ -2,10 +2,6 @@
     margin: 0;
 }
 
-/* body {
-    height: 100vh;
-} */
-
 .header-container {
     display: flex;
 }
@@ -21,14 +17,19 @@ form {
     padding: 0 40px 40px 90px;
     width: 400px;
     justify-content: space-around;
-    /* flex-direction: column; */
     font-size: 1.5em;
     align-items: flex-end;
+}
+
+select {
+    padding: 3px;
+    margin: 0 7px 0 0px;
 }
 
 label, 
 select,
 input {
+    height: 30px;
     font-family: 'Press Start 2P', cursive;
 }
 
