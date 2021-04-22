@@ -31,3 +31,9 @@ img {
     width: 150px;
     height: 150px;
 }
+
+.hidden {
+    visibility: hidden !important;
+    width: 0;
+    padding: 0;
+}

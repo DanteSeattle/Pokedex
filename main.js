@@ -1,6 +1,4 @@
 let div = document.querySelector(`#likeContainer`)
-
-
 class aPokemonCard {
 
     constructor( myId, myName, myImage, myType ){
@@ -15,32 +13,17 @@ const ul = document.querySelector(`#pokemonList`)
 const form = document.querySelector(`form`)
 const dropdown = document.querySelector(`#dropdown`)
 
-
 const getPokemon = async function (start, stop) {
     const tempArray = [];
     for (let i = start; i < stop; i++) {
         const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
         const pokemon = await data.json()
 
-
-
         // new pokemonCard(pokemon.id,pokemon.name,pokemon.sprites.front_default)
         const pokemonCard = new aPokemonCard(pokemon.id, pokemon.name, pokemon.sprites.front_default, pokemon.types)
-
-        // pokemonCard.id = pokemon.id
-        // pokemonCard.name = pokemon.name
-        // pokemonCard.image = pokemon.sprites.front_default
-        // pokemonCard.type = pokemon.types.map(pokemonType => pokemonType.type.name)
-
         renderPokemon(pokemonCard)
-        //tempArray.push(pokemonCard)
-
     }
-
 }
-
-
-
 
 getPokemon(1, 152)
 
@@ -80,7 +63,7 @@ function renderPokemon(pokemonCard) {
 }
 
 const favoritesRender = (e, pokemonCard) => {
-    e.target.parentNode.remove()
+    e.target.parentNode.classList.add(`hidden`)
     const newListElement = document.createElement("li")
     const pokemonName = document.createElement('h2')
     const pokemonImage = document.createElement('img')
@@ -88,6 +71,7 @@ const favoritesRender = (e, pokemonCard) => {
     const favoritesButton = document.createElement('button')
 
     favoritesButton.setAttribute(`id`, `button`)
+    newListElement.dataset.pokeNumber = pokemonCard.id
     pokemonName.innerText = pokemonCard.id + " " + pokemonCard.name
     pokemonImage.src = pokemonCard.image
     favoritesButton.innerText = `Remove from Favorites`
@@ -107,7 +91,7 @@ const favoritesRender = (e, pokemonCard) => {
 
 const removeFavoritesRender = (e, pokemonCard) => {
     e.target.parentNode.remove()
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonCard.id}`)
-        .then(data => data.json())
-    renderPokemon(pokemonCard)
+    let unfavoriteItem = e.target.parentNode.dataset.pokeNumber
+    let matchingItem = document.querySelector(`[data-pokemon-number~="${unfavoriteItem}"]`)
+    matchingItem.className = ''
 }
