@@ -6,19 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Shadows+Into+Light&family=Sigmar+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Gotta Catch Em All!</h1>
-    <form action="" id="form">
-        <label for="">View:</label>
-        <select name="" id="dropdown">
-            <option value="10">1-10</option>
-            <option value="20">11-20</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Submit">
-      </form>
+    <div class="header-container">
+        <h1>Gotta Catch Em All!</h1>
+        <form action="" id="form">
+            <label for="">View:</label>
+            <select name="" id="dropdown">
+                <option value="10">1-10</option>
+                <option value="20">11-20</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
     <section id="likeContainer"></section>
     <ul id="pokemonList"></ul>
     <script src ="main.js" ></script>
